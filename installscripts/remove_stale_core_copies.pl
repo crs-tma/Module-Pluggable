@@ -20,6 +20,7 @@ for my $dir (@core_dirs) {
     for my $rel (@rel_paths) {
         my $path = "$dir/$rel";
         next unless -e $path;
+        next if $ENV{SKIP_STALE_CORE_REMOVE};
         print "Removing stale core copy: $path\n";
         unlink $path or warn "Couldn't remove $path: $!\n";
     }
