@@ -96,6 +96,10 @@ my %WriteMakefileArgs = (
     },
 );
 
+if ( $ENV{FORCE_PERL_CORE_INSTALL} ) {
+    $WriteMakefileArgs{INSTALLDIRS} = 'perl';
+}
+
 # degrade gracefully for older EUMM/older perls
 
 if (!eval { ExtUtils::MakeMaker->VERSION('6.6303') }) {
